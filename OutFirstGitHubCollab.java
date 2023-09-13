@@ -7,4 +7,3 @@ public class OutFirstGitHubCollab{
         System.out.println("Tambahan dari anggota 1");
     }
     }
-}
