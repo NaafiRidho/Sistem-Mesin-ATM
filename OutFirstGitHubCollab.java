@@ -3,5 +3,6 @@ public class OurFirstGitHubCollab{
         System.out.println("ini ceritanya fitur pertama yang sudah berjalan dengan baik");
 
         System.out.println("ketua mulai mengembangkan fitur ke 2");
+        System.out.println("Tambahan dari anggota 1")
     }
 }
