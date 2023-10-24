@@ -13,18 +13,19 @@ public class sistemmesin_atm {
         System.out.println("========================================");
         System.out.println("masukkan user:");
         user = sc.nextLine();
-        user = sc.nextLine();
         System.out.println("masukkan password:");
         password = sc.nextDouble();
+        if (user.equalsIgnoreCase("naafi") && password == 123) {
 
-        do {
-            if (user.equalsIgnoreCase("naafi") && password == 123) {
-                System.out.println("1. cek saldo");
-                System.out.println("2.ambil uang");
-                System.out.println("3. transfer");
-            } else {
-                System.out.println("Username dan password salah");
-            }
+        } else {
+            System.out.println("Username dan password salah");
+        }
+
+        while(user.equalsIgnoreCase("naafi") && password == 123) {
+            System.out.println("1. cek saldo");
+            System.out.println("2.ambil uang");
+            System.out.println("3. transfer");
+
             // case
             System.out.println("masukkan (1 2 3 4:)");
             operator = sc.next().charAt(0);
@@ -77,12 +78,14 @@ public class sistemmesin_atm {
             }
             System.out.println("Apakah ingin kembali ke menu awal (Y/T)? ");
             konfirmasi = sc.next().charAt(0);
+            if (konfirmasi == 't' || konfirmasi == 'T') {
+                System.out.println("Terima kasih");
+                break;
+            }
 
-        } while (konfirmasi == 'y' || konfirmasi == 'Y');
+        } 
 
-        if (konfirmasi == 't' || konfirmasi == 'T') {
-            System.out.println("Terima kasih");
-        }
+        
 
     }
 
