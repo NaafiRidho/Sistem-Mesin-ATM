@@ -128,94 +128,97 @@ public class sistemATM {
                         System.out.println("   PILIH JENIS TRANSAKSI");   
                         System.out.println("---------------------------");
                         System.out.print("\n"
-                                            + "1. Penarikan Tunai\n"
-                                            + "2. Setor Tunai\n"
-                                            + "3. Cek Saldo\n"
-                                            + "4. Transfer\n"
-                                            + "5. Ubah Pin\n"
-                                            + "6. Mutasi Rekening\n"
-                                            + "Masukkan Pilihan : ");
-                                            int operator = sc.nextInt();
-                                        switch (operator) {
-                                            case 1:
-                                                System.out.println(" ");
-                                                System.out.println("==========================");
-                                                System.out.println("      PENARIKAN TUNAI     ");
-                                                System.out.println("=========================="); 
-                                                int [] nominal = {100000, 200000, 300000, 500000, 1000000, 1500000};
-                                                System.out.println("1. 100.000 \t 4. 500.000 ");
-                                                System.out.println("2. 200.000 \t 5. 1.000.000");
-                                                System.out.println("3. 300.000 \t 6. 1.500.000");
-                                                System.out.print("Pilih Jumlah Penarikan Tunai yang Anda Inginkan: ");
-                                                int tarik = sc.nextInt();
-                                                saldoNasabahs[userID] = saldoNasabahs[userID] - nominal[tarik-1];
-                                                System.out.println(" ");
-                                                System.out.println("        Transaksi Anda Berhasil     ");
-                                                System.out.println("------------------------------------");
-                                                System.out.println("Anda Melakukan Tarik Tunai Sebesar Rp. " + nominal[tarik-1]);
-                                                System.out.println("Saldo Anda Tersisa Rp. " + saldoNasabahs[userID]);
-                                                System.out.println("------------------------------------");
-                                                break;
-                                            case 2:
-                                                // SETOR TUNAI
-                                                System.out.println("==========================");
-                                                System.out.println("        SETOR TUNAI       ");
-                                                System.out.println("==========================");
-                                                System.out.println("Saldo Anda adalah Rp." + saldoNasabahs[userID]);
-                                                System.out.print("Masukkan nominal uang yang Anda setorkan : ");
-                                                int setor = sc.nextInt();
-                                                saldoNasabahs[userID] = saldoNasabahs[userID] + setor;
-                                                System.out.println(" ");
-                                                System.out.println("    Transaksi Anda Berhasil"   );
-                                                System.out.println("--------------------------------");
-                                                System.out.println("Anda melakukan setor tunai sebesar Rp." + setor);
-                                                System.out.println("Jumlah saldo Anda adalah Rp." + saldoNasabahs[userID]);
-                                                System.out.println("--------------------------------");
-                                                break;
-                                            case 3:
-                                                // CEK SALDO
-                                                System.out.println("==========================");
-                                                System.out.println("         CEK SALDO        ");
-                                                System.out.println("==========================");
-                                                System.out.println("Nama Nasabah\t: " + fullNames[userID]);
-                                                System.out.println("Nomor Rekening\t: " + rekNasabahs[userID]);
-                                                System.out.println("Saldo     \t: Rp." + saldoNasabahs[userID]);
-                                                System.out.println(" ");
-                                                break;
-                                            case 4:
-                                                // TRANSFER
-                                                System.out.println("==========================");
-                                                System.out.println("          TRANSFER        ");
-                                                System.out.println("==========================");
-                                                System.out.println("Masukkan Jumlah Nominal yang Akan Ditransfer: ");
-                                                int transfer = sc.nextInt();
+                            + "1. Penarikan Tunai\n"
+                            + "2. Setor Tunai\n"
+                            + "3. Cek Saldo\n"
+                            + "4. Transfer\n"
+                            + "5. Ubah Pin\n"
+                            + "6. Mutasi Rekening\n"
+                            + "Masukkan Pilihan : ");
+                            int operator = sc.nextInt();
 
-                                                System.out.println("\nPilih Bank Tujuan Transfer");
-                                                String [] Bank = {"Mandiri", "BRI", "BCA", "BNI", "CIMB Niaga"};
-                                                System.out.println("1. Mandiri");
-                                                System.out.println("2. BRI");
-                                                System.out.println("3. BCA");
-                                                System.out.println("4. BNI");
-                                                System.out.println("5. CIMB Niaga");
-                                                System.out.print("Masukkan Pilihan : ");
-                                                int bank = sc.nextInt();
+                            switch (operator) {
+                                case 1:
+                                // TARIK TUNAI
+                                    System.out.println(" ");
+                                    System.out.println("            PENARIKAN TUNAI         ");
+                                    System.out.println("+----------------------------------+");
+                                    int [] nominal = {100000, 200000, 300000, 500000, 1000000, 1500000};
+                                    System.out.println("1. 100.000 \t 4. 500.000 ");
+                                    System.out.println("2. 200.000 \t 5. 1.000.000");
+                                    System.out.println("3. 300.000 \t 6. 1.500.000");
+                                    System.out.print("Pilih jumlah Penarikan Tunai yang Anda inginkan : ");
+                                    int tarik = sc.nextInt();
+                                    saldoNasabahs[userID] = saldoNasabahs[userID] - nominal[tarik-1];
+                                    System.out.println(" ");
+                                    System.out.println("            TARIK TUNAI             ");
+                                    System.out.println(" ");
+                                    System.out.println("JUMLAH  : Rp." + nominal[tarik-1]);
+                                    System.out.println("SALDO   : Rp." + saldoNasabahs[userID]);
+                                    System.out.println(" ");
+                                    System.out.println("----------TRANSAKSI SUKSES----------");
+                                    break;
+                                case 2:
+                                // SETOR TUNAI
+                                    System.out.println("==========================");
+                                    System.out.println("        SETOR TUNAI       ");
+                                    System.out.println("==========================");
+                                    System.out.println("Saldo Anda adalah Rp." + saldoNasabahs[userID]);
+                                    System.out.print("Masukkan nominal uang yang Anda setorkan : ");
+                                    int setor = sc.nextInt();
+                                    saldoNasabahs[userID] = saldoNasabahs[userID] + setor;
+                                    System.out.println(" ");
+                                    System.out.println("    Transaksi Anda Berhasil"   );
+                                    System.out.println("--------------------------------");
+                                    System.out.println("Anda melakukan setor tunai sebesar Rp." + setor);
+                                    System.out.println("Jumlah saldo Anda adalah Rp." + saldoNasabahs[userID]);
+                                    System.out.println("--------------------------------");
+                                    break;
+                                case 3:
+                                    // CEK SALDO
+                                    System.out.println("==========================");
+                                    System.out.println("         CEK SALDO        ");
+                                    System.out.println("==========================");
+                                    System.out.println("Nama Nasabah\t: " + fullNames[userID]);
+                                    System.out.println("Nomor Rekening\t: " + rekNasabahs[userID]);
+                                    System.out.println("Saldo     \t: Rp." + saldoNasabahs[userID]);
+                                    System.out.println(" ");
+                                    break;
+                                case 4:
+                                    // TRANSFER
+                                    System.out.println("==========================");
+                                    System.out.println("          TRANSFER        ");
+                                    System.out.println("==========================");
+                                    System.out.println("Masukkan Jumlah Nominal yang Akan Ditransfer: ");
+                                    int transfer = sc.nextInt();
 
-                                                System.out.println("\nMasukkan Nomor Rekening Tujuan: ");
-                                                sc.nextLine();
-                                                String noRek = sc.nextLine();
-                                                saldoNasabahs[userID] = saldoNasabahs[employeeCount-1] + transfer;
-                                                System.out.println("\nTransaksi Anda Berhasil");
-                                                System.out.println("BANK\t\t: " + Bank[bank-1]);
-                                                System.out.println("Nomor Rekening\t: " + rekNasabahs[userID]);
-                                                System.out.println("Atas Nama\t: " + fullNames[userID]);
-                                                System.out.println("Jumlah Transfer\t: " + transfer);
+                                    System.out.println("\nPilih Bank Tujuan Transfer");
+                                    String [] Bank = {"Mandiri", "BRI", "BCA", "BNI", "CIMB Niaga"};
+                                    System.out.println("1. Mandiri");
+                                    System.out.println("2. BRI");
+                                    System.out.println("3. BCA");
+                                    System.out.println("4. BNI");
+                                    System.out.println("5. CIMB Niaga");
+                                    System.out.print("Masukkan Pilihan : ");
+                                    int bank = sc.nextInt();
 
-                                                case 5 :
-                                                
+                                    System.out.println("\nMasukkan Nomor Rekening Tujuan: ");
+                                    sc.nextLine();
+                                    String noRek = sc.nextLine();
+                                    saldoNasabahs[userID] = saldoNasabahs[employeeCount-1] + transfer;
+                                    System.out.println("\nTransaksi Anda Berhasil");
+                                    System.out.println("BANK\t\t: " + Bank[bank-1]);
+                                    System.out.println("Nomor Rekening\t: " + rekNasabahs[userID]);
+                                    System.out.println("Atas Nama\t: " + fullNames[userID]);
+                                    System.out.println("Jumlah Transfer\t: " + transfer);
 
-                                                break;
-                                            default:
-                                                break;
+                                    case 5 :
+                                    
+
+                                    break;
+
+                                    default:
+                                        break;
                                         }
                                         
                                 } else {
