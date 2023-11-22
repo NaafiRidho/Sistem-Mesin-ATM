@@ -121,12 +121,111 @@ public class sistemATM {
                                         login = true;
                                     }
                                 }
+                                if (login == true) {
+                                    System.out.println(" ");
+                                    System.out.println("   PILIH JENIS TRANSAKSI");   
+                                    System.out.println("---------------------------");
+                                    System.out.print("\n"
+                                            + "1. Penarikan Tunai\n"
+                                            + "2. Setor Tunai\n"
+                                            + "3. Cek Saldo\n"
+                                            + "4. Transfer\n"
+                                            + "5. Ubah Pin\n"
+                                            + "6. Mutasi Rekening\n"
+                                            + "Masukkan Pilihan : ");
+                                            int operator = sc.nextInt();
+                                        switch (operator) {
+                                            case 1:
+                                                System.out.println(" ");
+                                                System.out.println("==========================");
+                                                System.out.println("      PENARIKAN TUNAI     ");
+                                                System.out.println("=========================="); 
+                                                int [] nominal = {100000, 200000, 300000, 500000, 1000000, 1500000};
+                                                System.out.println("1. 100.000 \t 4. 500.000 ");
+                                                System.out.println("2. 200.000 \t 5. 1.000.000");
+                                                System.out.println("3. 300.000 \t 6. 1.500.000");
+                                                System.out.print("Pilih Jumlah Penarikan Tunai yang Anda Inginkan: ");
+                                                int tarik = sc.nextInt();
+                                                saldoNasabahb[employeeCount-1] = saldoNasabahb[employeeCount-1] - nominal[tarik-1];
+                                                System.out.println(" ");
+                                                System.out.println("        Transaksi Anda Berhasil     ");
+                                                System.out.println("------------------------------------");
+                                                System.out.println("Anda Melakukan Tarik Tunai Sebesar Rp. " + nominal[tarik-1]);
+                                                System.out.println("Saldo Anda Tersisa Rp. " + saldoNasabahb[employeeCount-1]);
+                                                System.out.println("------------------------------------");
+                                                break;
+                                            case 2:
+                                                // SETOR TUNAI
+                                                System.out.println("==========================");
+                                                System.out.println("        SETOR TUNAI       ");
+                                                System.out.println("==========================");
+                                                System.out.println("Saldo Anda adalah Rp." + saldoNasabahb[employeeCount-1]);
+                                                System.out.print("Masukkan nominal uang yang Anda setorkan : ");
+                                                int setor = sc.nextInt();
+                                                saldoNasabahb[employeeCount-1] = saldoNasabahb[employeeCount-1] + setor;
+                                                System.out.println(" ");
+                                                System.out.println("    Transaksi Anda Berhasil"   );
+                                                System.out.println("--------------------------------");
+                                                System.out.println("Anda melakukan setor tunai sebesar Rp." + setor);
+                                                System.out.println("Jumlah saldo Anda adalah Rp." + saldoNasabahb[employeeCount-1]);
+                                                System.out.println("--------------------------------");
+                                                break;
+                                            case 3:
+                                                // CEK SALDO
+                                                System.out.println("==========================");
+                                                System.out.println("         CEK SALDO        ");
+                                                System.out.println("==========================");
+                                                System.out.println("Nama Nasabah\t: " + fullNameb[employeeCount-1]);
+                                                System.out.println("Nomor Rekening\t: " + RekNasabahb[employeeCount-1]);
+                                                System.out.println("Saldo     \t: Rp." + saldoNasabahb[employeeCount-1]);
+                                                System.out.println(" ");
+                                                break;
+                                            case 4:
+                                                // TRANSFER
+                                                System.out.println("==========================");
+                                                System.out.println("          TRANSFER        ");
+                                                System.out.println("==========================");
+                                                System.out.println("Masukkan Jumlah Nominal yang Akan Ditransfer: ");
+                                                int transfer = sc.nextInt();
 
-                            }
-                            System.out.println(" ");
-                            System.out.println("Apakah ingin kembali ke menu utama? (y/n)");
-                            kembali = sc.next().charAt(0);
+                                                System.out.println("\nPilih Bank Tujuan Transfer");
+                                                String [] Bank = {"Mandiri", "BRI", "BCA", "BNI", "CIMB Niaga"};
+                                                System.out.println("1. Mandiri");
+                                                System.out.println("2. BRI");
+                                                System.out.println("3. BCA");
+                                                System.out.println("4. BNI");
+                                                System.out.println("5. CIMB Niaga");
+                                                System.out.print("Masukkan Pilihan : ");
+                                                int bank = sc.nextInt();
+
+                                                System.out.println("\nMasukkan Nomor Rekening Tujuan: ");
+                                                sc.nextLine();
+                                                String noRek = sc.nextLine();
+                                                saldoNasabahb[employeeCount-1] = saldoNasabahb[employeeCount-1] + transfer;
+                                                System.out.println("\nTransaksi Anda Berhasil");
+                                                System.out.println("BANK\t\t: " + Bank[bank-1]);
+                                                System.out.println("Nomor Rekening\t: " + RekNasabahb[employeeCount-1]);
+                                                System.out.println("Atas Nama\t: " + fullNameb[employeeCount-1]);
+                                                System.out.println("Jumlah Transfer\t: " + transfer);
+
+                                                case 5 :
+                                                
+
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        
+                                } else {
+                                    System.out.println("Maaf, Nomor Rekening dan PIN Anda Salah");
+                                }
+                                break;
+                        }
+                        System.out.println(" ");
+                        System.out.println("Apakah ingin kembali ke menu utama? (y/n)");
+                        kembali = sc.next().charAt(0);
             } while (kembali == 'y' || kembali == 'Y');
+
 
     }
 }
