@@ -158,32 +158,35 @@ public class sistemATM {
                                     System.out.println(" ");
                                     System.out.println("----------TRANSAKSI SUKSES----------");
                                     break;
-                                case 2:
+                                case 2 :
                                 // SETOR TUNAI
-                                    System.out.println("==========================");
-                                    System.out.println("        SETOR TUNAI       ");
-                                    System.out.println("==========================");
-                                    System.out.println("Saldo Anda adalah Rp." + saldoNasabahs[userID]);
-                                    System.out.print("Masukkan nominal uang yang Anda setorkan : ");
+                                    System.out.println(" ");
+                                    System.out.println("             SETOR TUNAI            ");
+                                    System.out.println("+----------------------------------+");
+                                    System.out.print("Masukkan nominal uang yang Anda Setorkan : ");
                                     int setor = sc.nextInt();
                                     saldoNasabahs[userID] = saldoNasabahs[userID] + setor;
                                     System.out.println(" ");
-                                    System.out.println("    Transaksi Anda Berhasil"   );
-                                    System.out.println("--------------------------------");
-                                    System.out.println("Anda melakukan setor tunai sebesar Rp." + setor);
-                                    System.out.println("Jumlah saldo Anda adalah Rp." + saldoNasabahs[userID]);
-                                    System.out.println("--------------------------------");
-                                    break;
-                                case 3:
-                                    // CEK SALDO
-                                    System.out.println("==========================");
-                                    System.out.println("         CEK SALDO        ");
-                                    System.out.println("==========================");
-                                    System.out.println("Nama Nasabah\t: " + fullNames[userID]);
-                                    System.out.println("Nomor Rekening\t: " + rekNasabahs[userID]);
-                                    System.out.println("Saldo     \t: Rp." + saldoNasabahs[userID]);
+                                    System.out.println("           SETORAN TUNAI            ");
                                     System.out.println(" ");
+                                    System.out.println("NO. REKENING    : " + rekNasabahs[userID]);
+                                    System.out.println("NAMA            : " + fullNames[userID]);
+                                    System.out.println("RINCIAN         : Rp." + setor);
+                                    System.out.println("SALDO           : Rp." + saldoNasabahs[userID]);
+                                    System.out.println(" ");
+                                    System.out.println("----------SETORAN TUNAI BERHASIL----------");
                                     break;
+                                
+                                case 3 :
+                                // CEK SALDO
+                                    System.out.println(" ");
+                                    System.out.println("              CEK SALDO             ");
+                                    System.out.println("+----------------------------------+");
+                                    System.out.println("NAMA            : " + fullNames[userID]);
+                                    System.out.println("NO. REKENING    : " + rekNasabahs[userID]);
+                                    System.out.println("SALDO           : Rp." + saldoNasabahs[userID]);
+                                    break;
+
                                 case 4:
                                     // TRANSFER
                                     System.out.println("==========================");
