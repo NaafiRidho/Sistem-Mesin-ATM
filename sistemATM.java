@@ -139,7 +139,6 @@ public class sistemATM {
 
                             switch (operator) {
                                 case 1:
-                                // TARIK TUNAI
                                     System.out.println(" ");
                                     System.out.println("            PENARIKAN TUNAI         ");
                                     System.out.println("+----------------------------------+");
@@ -158,8 +157,8 @@ public class sistemATM {
                                     System.out.println(" ");
                                     System.out.println("----------TRANSAKSI SUKSES----------");
                                     break;
+
                                 case 2 :
-                                // SETOR TUNAI
                                     System.out.println(" ");
                                     System.out.println("             SETOR TUNAI            ");
                                     System.out.println("+----------------------------------+");
@@ -178,7 +177,6 @@ public class sistemATM {
                                     break;
                                 
                                 case 3 :
-                                // CEK SALDO
                                     System.out.println(" ");
                                     System.out.println("              CEK SALDO             ");
                                     System.out.println("+----------------------------------+");
@@ -188,13 +186,9 @@ public class sistemATM {
                                     break;
 
                                 case 4:
-                                    // TRANSFER
-                                    System.out.println("==========================");
-                                    System.out.println("          TRANSFER        ");
-                                    System.out.println("==========================");
-                                    System.out.println("Masukkan Jumlah Nominal yang Akan Ditransfer: ");
-                                    int transfer = sc.nextInt();
-
+                                    System.out.println(" ");
+                                    System.out.println("               TRANSFER             ");
+                                    System.out.println("+----------------------------------+");
                                     System.out.println("\nPilih Bank Tujuan Transfer");
                                     String [] Bank = {"Mandiri", "BRI", "BCA", "BNI", "CIMB Niaga"};
                                     System.out.println("1. Mandiri");
@@ -205,19 +199,60 @@ public class sistemATM {
                                     System.out.print("Masukkan Pilihan : ");
                                     int bank = sc.nextInt();
 
-                                    System.out.println("\nMasukkan Nomor Rekening Tujuan: ");
+                                    System.out.print("\nMasukkan Nomor Rekening Tujuan : ");
                                     sc.nextLine();
-                                    String noRek = sc.nextLine();
+                                    int noRek = sc.nextInt();
+                                    System.out.print("Masukkan jumlah nominal yang akan ditransfer : ");
+                                    int transfer = sc.nextInt();
                                     saldoNasabahs[userID] = saldoNasabahs[employeeCount-1] + transfer;
-                                    System.out.println("\nTransaksi Anda Berhasil");
-                                    System.out.println("BANK\t\t: " + Bank[bank-1]);
-                                    System.out.println("Nomor Rekening\t: " + rekNasabahs[userID]);
-                                    System.out.println("Atas Nama\t: " + fullNames[userID]);
-                                    System.out.println("Jumlah Transfer\t: " + transfer);
 
-                                    case 5 :
+                                    System.out.println(" ");
+                                    System.out.println("KE BANK         : " + Bank[bank-1]);
+                                    System.out.println("NOMOR REKENING  : " + rekNasabahs[userID]);
+                                    System.out.println("NAMA PENGIRIM   : " + fullNames[userID]);
+                                    System.out.println("JUMLAH          : Rp." + transfer);
+                                    System.out.println(" ");
+                                    System.out.println("----------TRANSFER BERHASIL----------");
+                                    System.out.println(" ");
+                                    System.out.println("           SIMPAN RESI INI           ");
+                                    System.out.println("        SEBAGAI BUKTI YANG SAH       ");
+
+                                case 5 :
+                                    System.out.println(" ");
+                                    System.out.println("              UBAH PIN             ");
+                                    System.out.println("+----------------------------------+");
+                                    System.out.print("Masukkan PIN Lama :");
+                                    int oldPin = sc.nextInt();
+                                    oldPin = pinNasabahs[userID];
+                                    System.out.println("Masukkan PIN Baru : ");
+                                    int newPin = sc.nextInt();
+                                    System.out.println("Konfirmasi PIN Baru : ");
+                                    int confirmNewPin = sc.nextInt();
+                                    if (newPin == confirmNewPin) {
+                                        System.out.println("PIN berhasil diubah");
+                                    } else {
+                                        System.out.println("PIN Konfirmasi tidak cocok. Transaksi gagal");
+                                    }
                                     
 
+                                    //if (changePin >= 1 && changePin <= employeeCount) {
+                                    //   int indexToEdit = changePin - 1;
+                                    //}
+                                    //if (changePin == currentPin) {
+                                    //} else {
+                                    //    System.out.println("PIN salah. Transaksi gagal");
+                                    //}
+                                    //System.out.print("Masukkan PIN baru : ");
+                                    //int newPin = sc.nextInt();
+                                    //System.out.print("Konfirmasi PIN baru : ");
+                                    //int confirmNewPin = sc.nextInt();
+
+                                    //if (newPin == confirmNewPin) {
+                                    //    currentPin = newPin;
+                                    //    System.out.println("PIN berhasil diubah");
+                                    //} else {
+                                    //    System.out.println("PIN konfirmasi tidak cocok. Transaksi gagal");
+                                    //}
                                     break;
 
                                     default:
