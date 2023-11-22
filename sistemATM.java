@@ -3,201 +3,130 @@ import java.util.Scanner;
 public class sistemATM {
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
+
         
-        String nama, username, noRek, jenisBayar, pinLama, pinBaru, pinKonfirmasi;
-        int rekening, pin, tarik, setor, transfer,bank, ubahPin, nomorAtm;
-        char operator, konfirmasi;
-        int saldo = 50000000;
-        boolean login = false;
+        char kembali;
 
-        String[] fullNames = new String[10]; // Nama Lengkap Nasabah Baru
-        int[] noRekNasabah = new int[10]; // Nomor Rekening
-        double[] saldoNasabah = new double[10]; // Saldo Nasabah
-        int[] pinNasabah = new int[10]; // PIN Nasabah
-        
+         // Data Login Nasabah
+         int[]arrayRek = {12345, 67890, 12114, 12164};
+         int[]arrayPIN = {1234, 5678, 1216, 1204};
+         boolean login = false;
+ 
+         // Tabel Admin
+         String[] fullNameb = new String[10]; // Nama Lengkap Nasabah Baru
+         int[] RekNasabahb = new int[10]; // Nomor Rekening Nasabah Baru
+         int[] saldoNasabahb = new int[10]; // Saldo Nasabah Baru
+         int[] pinNasabahb = new int[10]; // PIN Nasabah Baru
+         
+         fullNameb[0] = "M. Arif Fahrudin";
+         fullNameb[1] = "Naafi Ridho Athallah";
+         fullNameb[2] = "Nova Diana Ramadhan";
+ 
+         RekNasabahb[0] = 12345;
+         RekNasabahb[1] = 67890;
+         RekNasabahb[2] = 12114;
 
-        fullNames[0] = "M. Arif Fahrudin";
-        fullNames[1] = "Naafi Ridho Athallah";
-        fullNames[2] = "Nova Diana Ramadhan";
+         saldoNasabahb[0] = 500000;
+         saldoNasabahb[1] = 750000;
+         saldoNasabahb[2] = 1000000;
 
-        noRekNasabah[0] = 12345;
-        noRekNasabah[1] = 67890;
-        noRekNasabah[2] = 12114;
-
-        saldoNasabah[0] = 50.0000;
-        saldoNasabah[1] = 70.0000;
-        saldoNasabah[2] = 100.000;
-
-        pinNasabah[0] = 1234;
-        pinNasabah[1] = 5678;
-        pinNasabah[2] = 1216;
+         pinNasabahb[0] = 1234;
+         pinNasabahb[1] = 5678;
+         pinNasabahb[2] = 1216;
 
         int employeeCount = 3;
 
-        // LOGIN USERNAME DAN PASSWORD
+        // LOGIN
         do {
-        System.out.println("========================================");
-        System.out.println("         SELAMAT DATANG DI ATM          ");
-        System.out.println("========================================");
-        System.out.println("Pilih Login\n"
+            System.out.println("====================================");
+            System.out.println("        SELAMAT DATANG DI ATM"       );
+            System.out.println("====================================");
+            System.out.print("MENU\n"
                     + "1. Admin\n"
-                    + "2. Nasabah\n"
+                    + "2. Data Nasabah\n"
+                    + "3. Nasabah\n"
                     + "Masukkan Pilihan : ");
-                    int choice = sc.nextInt();
+                    int pilihan = sc.nextInt();
 
-                    switch (choice) {
+                    switch (pilihan) {
                         case 1:
-                            System.out.println("========================================");
-                            System.out.println("                  ADMIN                 ");
-                            System.out.println("========================================");
+                            // data nasabah
+                            System.out.println("                                        ADMIN                                                           ");
                             System.out.println(" ");
                             System.out.println(
                                         "---------------------------------------------------------------------------------------------------------------");
-                            System.out.printf("%-10s | %-20s | %-20s | %-20s | %-20s%n", 
+                            System.out.printf("%-5s | %-25s | %-20s | %-20s | %-10s%n", 
                             "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
                                     System.out.println(
                                         "---------------------------------------------------------------------------------------------------------------");
-                        for (int i = 0; i < employeeCount; i++) {
-                            System.out.printf("%-10d | %-20s | %-20s | %-20s | %-20s%n",
-                                    i + 1, fullNames[i], noRekNasabah[i], saldoNasabah[i], pinNasabah[i]);
-                        }
-                            break;
-                        case 2:
-                        
-                    
-                        default:
-                            break;
-                    }
+                           for (int i = 0; i < employeeCount; i++) {
+                            System.out.printf("%-5d | %-25s | %-20s | %-20s | %-10s%n",
+                                    i + 1, fullNameb[i], RekNasabahb[i], saldoNasabahb[i], pinNasabahb[i]);
                                 
-                    System.out.print("Masukkan Nama Anda\t : ");
-                    nama = sc.nextLine();
-                    System.out.print("Masukkan Rekening Anda \t : ");
-                    rekening = sc.nextInt();
-                    System.out.print("Masukkan PIN Anda \t : ");
-                    pin = sc.nextInt();
-
-                    if (rekening == 12345678 && pin == 123) {
-                    } else {
-                        System.out.println("Maaf Username dan Pin Anda Salah");
-                    }
-            }
-            
-                    // PILIH TRANSAKSI
-                    while (rekening == 12345678 && pin == 123); {
-                        System.out.println(" ");
-                        System.out.println("   PILIH JENIS TRANSAKSI");   
-                        System.out.println("---------------------------");
-                        System.out.print("\n"
-                                + "1. Penarikan Tunai\n"
-                                + "2. Setor Tunai\n"
-                                + "3. Cek Saldo\n"
-                                + "4. Transfer\n"
-                                + "5. Ubah Pin\n"
-                                + "6. Mutasi Rekening\n"
-                                + "Masukkan Pilihan : ");
-                        operator = sc.next().charAt(0);
-
-                        // TARIK TUNAI
-                        switch (operator) {
-                            case '1' :
-                                System.out.println(" ");
-                                System.out.println("==========================");
-                                System.out.println("      PENARIKAN TUNAI     ");
-                                System.out.println("==========================");
-                                int [] nominal = {100000, 200000, 300000, 500000, 1000000, 1500000};
-                                System.out.println("1. 100.000 \t 4. 500.000 ");
-                                System.out.println("2. 200.000 \t 5. 1.000.000");
-                                System.out.println("3. 300.000 \t 6. 1.500.000");
-                                System.out.println("Pilih Jumlah Penarikan Tunai yang Anda Inginkan: ");
-                                tarik = sc.nextInt();
-                                saldo = saldo - nominal[tarik-1];
-                                System.out.println("    Transaksi Anda Berhasil"   );
-                                System.out.println("------------------------------------");
-                                System.out.println("Anda Melakukan Tarik Tunai Sebesar " + tarik);
-                                System.out.println("Saldo Anda Tersisa Rp." + saldo);
-                                System.out.println("------------------------------------");
-                                break;
-
-                            case '2':
-                            // SETOR TUNAI
-                                System.out.println("==========================");
-                                System.out.println("        SETOR TUNAI       ");
-                                System.out.println("==========================");
-                                System.out.println("Saldo Anda adalah Rp." + saldo);
-                                System.out.print("Masukkan nominal uang yang Anda setorkan : ");
-                                setor = sc.nextInt();
-                                saldo = saldo + setor;
-                                System.out.println(" ");
-                                System.out.println("    Transaksi Anda Berhasil"   );
-                                System.out.println("--------------------------------");
-                                System.out.println("Anda melakukan setor tunai sebesar Rp." + setor);
-                                System.out.println("Jumlah saldo Anda adalah Rp." + saldo);
-                                System.out.println("--------------------------------");
-                                break;
-                            
-                            case '3':
-                            // CEK SALDO
-                                System.out.println("==========================");
-                                System.out.println("         CEK SALDO        ");
-                                System.out.println("==========================");
-                                System.out.println("Nama Nasabah\t: " + nama);
-                                System.out.println("Nomor Rekening\t: " + rekening);
-                                System.out.println("Saldo     \t: Rp." + saldo);
-                                System.out.println(" ");
-                                break;
-
-                            case '4':
-                            // TRANSFER
-                                System.out.println("==========================");
-                                System.out.println("          TRANSFER        ");
-                                System.out.println("==========================");
-                                System.out.println("Masukkan Jumlah Nominal yang Akan Ditransfer: ");
-                                transfer = sc.nextInt();
-
-                                System.out.println("\nPilih Bank Tujuan Transfer");
-                                String [] Bank = {"Mandiri", "BRI", "BCA", "BNI", "CIMB Niaga"};
-                                System.out.println("1. Mandiri");
-                                System.out.println("2. BRI");
-                                System.out.println("3. BCA");
-                                System.out.println("4. BNI");
-                                System.out.println("5. CIMB Niaga");
-                                System.out.print("Masukkan Pilihan : ");
-                                bank = sc.nextInt();
-
-                                System.out.println("\nMasukkan Nomor Rekening Tujuan: ");
-                                sc.nextLine();
-                                noRek = sc.nextLine();
-                                saldo = saldo - transfer;
-                                System.out.println("\nTransaksi Anda Berhasil");
-                                System.out.println("BANK\t\t: " + Bank[bank-1]);
-                                System.out.println("Nomor Rekening\t: " + noRek);
-                                System.out.println("Jumlah Transfer\t: " + transfer);
-                                break;
-                            
-                            case '5':
-                            // UBAH PIN
-                            System.out.println("==========================");
-                            System.out.println("         UBAH PIN         ");
-                            System.out.println("==========================");
-
-                            System.out.println("Masukkan PIN lama: ");
-                            pinLama = sc.nextLine();
-                            System.out.println("Masukkan PIN baru: ");
-                            pinBaru = sc.nextLine();
-                            System.out.println("Konfirmasi PIN baru: ");
-                            pinKonfirmasi = sc.nextLine();
-                            
-                            if (!pinBaru.equals(pinKonfirmasi)) {
-                                System.out.println("PIN baru tidak sama dengan konfirmasi pin baru");
                             }
-                            System.out.println("PIN berhasil diubah");
-                        }
-                        System.out.println("Apakah Anda Ingin Melakukan Transaksi Kembali (Y/T)? ");
-                        konfirmasi = sc.next().charAt(0);
-                        if (konfirmasi == 't' || konfirmasi == 'T') {
-                            System.out.println("Terima kasih");
-                    }
-                }
+                            // tambah nasabah baru
+                            System.out.println(" ");
+                            System.out.println("Apakah Ingin Menambah Nasabah Baru? (y/n): ");
+                            String choice = sc.next();
+                            // sc.next();
+                            if (choice.equalsIgnoreCase("y")) {
+                                if (employeeCount < fullNameb.length) {
+                                    sc.nextLine(); // Membersihkan newline
+                                    System.out.println(" ");
+                                    System.out.println("     TAMBAH NASABAH BARU"    );
+                                    System.out.println("+--------------------------+");
+                                    System.out.print("Nama Lengkap   : ");
+                                    fullNameb[employeeCount] = sc.nextLine();
+                                    System.out.print("Nomor Rekening : ");
+                                    RekNasabahb[employeeCount] = sc.nextInt();
+                                    System.out.print("Saldo          : ");
+                                    saldoNasabahb[employeeCount] = sc.nextInt();
+                                    System.out.print("PIN            : ");
+                                    pinNasabahb[employeeCount] = sc.nextInt();
+                                    employeeCount++; 
+                                } 
+                                else {
+                                    System.out.println("Batas maksimum nasabah baru telah tercapai");
+                                } 
+                            } 
+                            break;
+
+                        case 2:
+                           // menampilkan data nasabah
+                            System.out.println("========================================        ADMIN       ========================================");
+                            System.out.println(" ");
+                            System.out.println(
+                                        "------------------------------------------------------------------------------------------------------------");
+                            System.out.printf("%-5s | %-25s | %-20s | %-20s | %-10s%n", 
+                            "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
+                                    System.out.println(
+                                        "------------------------------------------------------------------------------------------------------------");
+                           for (int i = 0; i < employeeCount; i++) {
+                            System.out.printf("%-5d | %-25s | %-20s | %-20s | %-10s%n",
+                                    i + 1, fullNameb[i], RekNasabahb[i], saldoNasabahb[i], pinNasabahb[i]);
+                           }
+                            break;
+
+                        case 3:
+                           // login nasabah
+                            System.out.println("========================================");
+                            System.out.println("                  NASABAH               ");
+                            System.out.println("========================================");
+                            System.out.print("Masukkan Nomor Rekening Anda: ");
+                            int noRekNasabah = sc.nextInt();
+                            System.out.print("Masukkan PIN ATM Anda: ");
+                            int pinNasabah = sc.nextInt(); 
+                                for (int i = 0; i < 3; i++) {
+                                    if (noRekNasabah == arrayRek[i] && pinNasabah == arrayPIN[i]) {
+                                        login = true;
+                                    }
+                                }
+
+                            }
+                            System.out.println(" ");
+                            System.out.println("Apakah ingin kembali ke menu utama? (y/n)");
+                            kembali = sc.next().charAt(0);
+            } while (kembali == 'y' || kembali == 'Y');
 
     }
 }
