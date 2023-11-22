@@ -5,7 +5,6 @@ public class sistemATM {
         Scanner sc = new Scanner (System.in);
         
         char kembali; 
-        boolean isValidCredential = false;
 
         // Tabel Admin
         String[] fullNames = new String[15]; // nama lengkap nasabah baru
@@ -111,6 +110,8 @@ public class sistemATM {
                     noRekNasabah = sc.nextInt();
                     System.out.print("Masukkan PIN ATM Anda : ");
                     pinNasabah = sc.nextInt();
+                    boolean isValidCredential = false;
+
                     for (int i = 0; i < employeeCount; i++) {
                         if (noRekNasabah == rekNasabahs[i] && pinNasabah == pinNasabahs[i]) {
                             isValidCredential = true;
@@ -119,6 +120,10 @@ public class sistemATM {
                     }
 
                     if (isValidCredential) {
+                        System.out.println(" ");
+                        System.out.println("Hai" + " " + fullNames[userID] + "!" + "\n" + "Selamat Datang di ATM");
+                        System.out.println(" ");
+                        System.out.println("Silahkan pilih jenis transaksi yang Anda inginkan");
                         System.out.println(" ");
                         System.out.println("   PILIH JENIS TRANSAKSI");   
                         System.out.println("---------------------------");
