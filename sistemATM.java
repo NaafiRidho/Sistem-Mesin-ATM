@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class sistemATM {
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
-
         
         char kembali;
 
@@ -35,6 +34,8 @@ public class sistemATM {
          pinNasabahb[2] = 1216;
 
         int employeeCount = 3;
+        int noRekNasabah, pinNasabah;
+        int userID=0;
 
         // LOGIN
         do {
@@ -113,15 +114,18 @@ public class sistemATM {
                             System.out.println("                  NASABAH               ");
                             System.out.println("========================================");
                             System.out.print("Masukkan Nomor Rekening Anda: ");
-                            int noRekNasabah = sc.nextInt();
+                            noRekNasabah = sc.nextInt();
                             System.out.print("Masukkan PIN ATM Anda: ");
-                            int pinNasabah = sc.nextInt(); 
-                                for (int i = 0; i < 3; i++) {
-                                    if (noRekNasabah == arrayRek[i] && pinNasabah == arrayPIN[i]) {
-                                        login = true;
-                                    }
+                            pinNasabah = sc.nextInt();
+                            boolean isValidCredential = false;
+                            for (int i = 0; i < employeeCount; i++) {
+                                if (noRekNasabah == RekNasabahb[i] && pinNasabah == pinNasabahb[i]) {
+                                    isValidCredential = true;
+                                    userID = i;
                                 }
-                                if (login == true) {
+                            }
+                                
+                                if (isValidCredential) {
                                     System.out.println(" ");
                                     System.out.println("   PILIH JENIS TRANSAKSI");   
                                     System.out.println("---------------------------");
@@ -146,12 +150,12 @@ public class sistemATM {
                                                 System.out.println("3. 300.000 \t 6. 1.500.000");
                                                 System.out.print("Pilih Jumlah Penarikan Tunai yang Anda Inginkan: ");
                                                 int tarik = sc.nextInt();
-                                                saldoNasabahb[employeeCount-1] = saldoNasabahb[employeeCount-1] - nominal[tarik-1];
+                                                saldoNasabahb[userID] = saldoNasabahb[userID] - nominal[tarik-1];
                                                 System.out.println(" ");
                                                 System.out.println("        Transaksi Anda Berhasil     ");
                                                 System.out.println("------------------------------------");
                                                 System.out.println("Anda Melakukan Tarik Tunai Sebesar Rp. " + nominal[tarik-1]);
-                                                System.out.println("Saldo Anda Tersisa Rp. " + saldoNasabahb[employeeCount-1]);
+                                                System.out.println("Saldo Anda Tersisa Rp. " + saldoNasabahb[userID]);
                                                 System.out.println("------------------------------------");
                                                 break;
                                             case 2:
@@ -159,15 +163,15 @@ public class sistemATM {
                                                 System.out.println("==========================");
                                                 System.out.println("        SETOR TUNAI       ");
                                                 System.out.println("==========================");
-                                                System.out.println("Saldo Anda adalah Rp." + saldoNasabahb[employeeCount-1]);
+                                                System.out.println("Saldo Anda adalah Rp." + saldoNasabahb[userID]);
                                                 System.out.print("Masukkan nominal uang yang Anda setorkan : ");
                                                 int setor = sc.nextInt();
-                                                saldoNasabahb[employeeCount-1] = saldoNasabahb[employeeCount-1] + setor;
+                                                saldoNasabahb[userID] = saldoNasabahb[userID] + setor;
                                                 System.out.println(" ");
                                                 System.out.println("    Transaksi Anda Berhasil"   );
                                                 System.out.println("--------------------------------");
                                                 System.out.println("Anda melakukan setor tunai sebesar Rp." + setor);
-                                                System.out.println("Jumlah saldo Anda adalah Rp." + saldoNasabahb[employeeCount-1]);
+                                                System.out.println("Jumlah saldo Anda adalah Rp." + saldoNasabahb[userID]);
                                                 System.out.println("--------------------------------");
                                                 break;
                                             case 3:
@@ -175,9 +179,9 @@ public class sistemATM {
                                                 System.out.println("==========================");
                                                 System.out.println("         CEK SALDO        ");
                                                 System.out.println("==========================");
-                                                System.out.println("Nama Nasabah\t: " + fullNameb[employeeCount-1]);
-                                                System.out.println("Nomor Rekening\t: " + RekNasabahb[employeeCount-1]);
-                                                System.out.println("Saldo     \t: Rp." + saldoNasabahb[employeeCount-1]);
+                                                System.out.println("Nama Nasabah\t: " + fullNameb[userID]);
+                                                System.out.println("Nomor Rekening\t: " + RekNasabahb[userID]);
+                                                System.out.println("Saldo     \t: Rp." + saldoNasabahb[userID]);
                                                 System.out.println(" ");
                                                 break;
                                             case 4:
@@ -201,11 +205,12 @@ public class sistemATM {
                                                 System.out.println("\nMasukkan Nomor Rekening Tujuan: ");
                                                 sc.nextLine();
                                                 String noRek = sc.nextLine();
-                                                saldoNasabahb[employeeCount-1] = saldoNasabahb[employeeCount-1] + transfer;
+                                                saldoNasabahb[userID]
+                                                 = saldoNasabahb[employeeCount-1] + transfer;
                                                 System.out.println("\nTransaksi Anda Berhasil");
                                                 System.out.println("BANK\t\t: " + Bank[bank-1]);
-                                                System.out.println("Nomor Rekening\t: " + RekNasabahb[employeeCount-1]);
-                                                System.out.println("Atas Nama\t: " + fullNameb[employeeCount-1]);
+                                                System.out.println("Nomor Rekening\t: " + RekNasabahb[userID]);
+                                                System.out.println("Atas Nama\t: " + fullNameb[userID]);
                                                 System.out.println("Jumlah Transfer\t: " + transfer);
 
                                                 case 5 :
