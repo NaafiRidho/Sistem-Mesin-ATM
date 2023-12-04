@@ -30,14 +30,14 @@ public class sistemATM {
         saldoNasabahs[1] = 7500000;
         saldoNasabahs[2] = 10000000;
 
-        char kembali;
+        char kembali='n';
 
         String inputUsername, inputPassword, search;
         
         boolean isValidCredential = false;
         
         int customerCount = 3;
-        int pilih = 0, pilih1, pilih2, pilih3;
+        int pilih = 0, pilih1=0, pilih2, pilih3;
         int pilihAdmin = 0;
         int noRekNasabah, pinNasabah;
         int userID = 0;
@@ -396,21 +396,26 @@ public class sistemATM {
                             
                             case 4:
                                 System.out.println("");
-                                System.exit(0);
+                                break;
                 
                             default:
                                 System.out.println("Pilihan tidak valid. Silahkan memilih lagi");
                                 break;
                         }
+                        if (pilih1==4) {
+                            break;   
+                        }
+                        else{
                         System.out.println();
                         System.out.println("Apakah Anda ingin kembali ke menu utama? (y/n)");
                         kembali = sc.next().charAt(0);
+                        }
                     } while (kembali == 'y' || kembali == 'Y');
                 }
             }
             System.out.println();
             
-        } while (pilih != 3);
+        } while (pilih != 3 || pilih1==4);
 
        
     }
