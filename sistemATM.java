@@ -333,10 +333,11 @@ public class sistemATM {
                             // data nasabah
                             case 1:
                                 System.out.println("Data Nasabah ");
-                                System.out.println(
-                                            "---------------------------------------------------------------------------------------------------------------");
-                                System.out.printf("%-5s | %-25s | %-20s | %-20s | %-10s%n", 
-                                "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
+                                headerTabel();
+                                // System.out.println(
+                                //             "---------------------------------------------------------------------------------------------------------------");
+                                // System.out.printf("%-5s | %-25s | %-20s | %-20s | %-10s%n", 
+                                // "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
                                         System.out.println(
                                             "---------------------------------------------------------------------------------------------------------------");
                                 for (int i = 0; i < customerCount; i++) {
@@ -378,10 +379,11 @@ public class sistemATM {
 
                                         System.out.println("Data nasabah dengan nama yang dicari: ");
                                         System.out.println();
-                                        System.out.println(
-                                                    "---------------------------------------------------------------------------------------------------------------");
-                                        System.out.printf("%-10s | %-25s | %-20s | %-20s | %-10s%n", 
-                                        "Urutan", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
+                                        headerTabel();
+                                        // System.out.println(
+                                        //             "---------------------------------------------------------------------------------------------------------------");
+                                        // System.out.printf("%-10s | %-25s | %-20s | %-20s | %-10s%n", 
+                                        // "Urutan", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
                                                 System.out.println(
                                                     "---------------------------------------------------------------------------------------------------------------");
                                         System.out.printf("%-10d | %-25s | %-20s | %-20s | %-10s%n",
@@ -418,6 +420,13 @@ public class sistemATM {
         } while (pilih != 3 || pilih1==4);
 
        
+    }
+    static void headerTabel() {
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-10s | %-25s | %-20s | %-20s | %-10s%n",
+                "Urutan", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
+
     }
 }
 
