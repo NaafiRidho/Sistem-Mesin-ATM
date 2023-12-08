@@ -2,9 +2,14 @@ import java.util.Scanner;
 
 public class sistemmesin_atm {
     public static void main(String[] args) {
-        String user, namaBank;
+
+        String namaBank;
+        int[] arrayNomor = { 123, 456, 789 };
+        int[] arrayPassword = { 123, 456, 789 };
+        int nomorAtm, password;
+        boolean login = false;
         char operator, konfirmasi;
-        double password, saldo = 5000000, tarikUang, tabunganAkhir, transfer, pajak, nomorRekening;
+        double saldo = 5000000, tarikUang, tabunganAkhir, transfer, pajak, nomorRekening;
         Scanner sc = new Scanner(System.in);
 
         // LOGIN USERNAME DAN PASSWORD
@@ -12,19 +17,25 @@ public class sistemmesin_atm {
         System.out.println("         Selamat datang di ATM          ");
         System.out.println("========================================");
         System.out.println("masukkan user:");
-        user = sc.nextLine();
+        nomorAtm = sc.nextInt();
         System.out.println("masukkan password:");
-        password = sc.nextDouble();
-        if (user.equalsIgnoreCase("naafi") && password == 123) {
+        password = sc.nextInt();
 
-        } else {
-            System.out.println("Username dan password salah");
+        for (int i = 0; i < 3; i++) {
+            if (nomorAtm == arrayNomor[i] && password == arrayPassword[i]) {
+                login = true;
+            }
         }
-
-        while(user.equalsIgnoreCase("naafi") && password == 123) {
+        if (login == true) {
+            System.out.println("Berhasil login");
+        } else {
+            System.out.println("tidak Berhasil login");
+        }
+        while (login == true) {
             System.out.println("1. cek saldo");
             System.out.println("2.ambil uang");
             System.out.println("3. transfer");
+            System.out.println("4. Ubah Pin");
 
             // case
             System.out.println("masukkan (1 2 3 4:)");
@@ -58,6 +69,7 @@ public class sistemmesin_atm {
                             break;
                         case "3":
                             System.out.println("bri");
+                            break;
 
                     }
 
@@ -68,7 +80,7 @@ public class sistemmesin_atm {
                     }
 
                     System.out.println("===========================");
-                    System.out.println("  Masukkan Nomor rekening  ");
+                    System.out.println(" Masukkan Nomor rekening ");
                     nomorRekening = sc.nextDouble();
                     System.out.println("Masukkan total transfer : ");
                     transfer = sc.nextDouble();
@@ -83,9 +95,7 @@ public class sistemmesin_atm {
                 break;
             }
 
-        } 
-
-        
+        }
 
     }
 

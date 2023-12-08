@@ -161,6 +161,7 @@ public class sistemATM {
                             System.out.println("||  4. Transfer            ||");
                             System.out.println("||  5. Ubah PIN            ||");
                             System.out.println("||  6. Mutasi Rekening     ||");
+                            System.out.println("||  7. Keluar              ||");
                             System.out.println("||=========================||");
                             pilih2 = sc.nextInt();
 
@@ -335,7 +336,7 @@ public class sistemATM {
                                 break;
                             } else {
                                 System.out.println();
-                                System.out.println("Apakah Anda ingin kembali ke menu utama? (y/n)");
+                                System.out.println("Apakah Anda ingin melakukan transaksi lagi? (y/n)");
                                 kembali2 = sc.next().charAt(0);
                             }
                         } while (kembali2 == 'y' || kembali2 == 'Y');
@@ -355,7 +356,7 @@ public class sistemATM {
                         System.out.println("1. Data Nasabah");
                         System.out.println("2. Tambah Nasabah");
                         System.out.println("3. Pencarian Nasabah");
-                        System.out.println("4. Keluar");
+                        System.out.println("4. Kembali");
                         System.out.print("--> ");
                         pilih1 = sc.nextInt();
 
@@ -449,8 +450,8 @@ public class sistemATM {
     static void headerTabel() {
         System.out.println(
                 "---------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%-10s | %-25s | %-20s | %-20s | %-10s%n",
-                "Urutan", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
+        System.out.printf("%-5s | %-25s | %-20s | %-20s | %-10s%n",
+                "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
 
     }
 }
