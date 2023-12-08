@@ -103,6 +103,7 @@ public class sistemATM {
                         System.out.println("------------------------------");
 
                         // login ulang
+                        System.out.println();
                         System.out.println("+------------------------------------+");
                         System.out.print("Masukkan username Anda: ");
                         inputUsername = sc.next();
@@ -322,7 +323,6 @@ public class sistemATM {
                                         for (int j = 0; j < kolomMutasi[i]; j++) {
                                             System.out.printf("%-5d | %-20s | %-20s%n", j + 1, jenisFitur[i][j],
                                                     nominalMutasi[i][j]);
-
                                         }
 
                                     }
@@ -413,7 +413,7 @@ public class sistemATM {
                                         headerTabel();
                                         System.out.println(
                                                 "---------------------------------------------------------------------------------------------------------------");
-                                        System.out.printf("%-10d | %-25s | %-20s | %-20s | %-10s%n",
+                                        System.out.printf("%-5d | %-25s | %-20s | %-20s | %-10s%n",
                                                 i + 1, fullNames[i], rekNasabahs[i], saldoNasabahs[i], pinNasabahs[i]);
                                         found = true;
                                     }
