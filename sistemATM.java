@@ -26,7 +26,7 @@ public class sistemATM {
         pinNasabahs[1] = 760085;
         pinNasabahs[2] = 760104;
 
-        saldoNasabahs[0] = 5000000;
+        saldoNasabahs[0] = 500000;
         saldoNasabahs[1] = 7500000;
         saldoNasabahs[2] = 10000000;
 
@@ -162,7 +162,6 @@ public class sistemATM {
                             System.out.println("||  4. Transfer            ||");
                             System.out.println("||  5. Ubah PIN            ||");
                             System.out.println("||  6. Mutasi Rekening     ||");
-                            System.out.println("||  7. Keluar              ||");
                             System.out.println("||=========================||");
                             pilih2 = sc.nextInt();
 
@@ -186,6 +185,12 @@ public class sistemATM {
                                     System.out.println("NAMA          : " + fullNames[userID]);
                                     System.out.println("NO. REKENING  : " + rekNasabahs[userID]);
                                     System.out.println("NOMINAL       : Rp." + nominal[tarik - 1]);
+                                    if (nominal[tarik] > saldoNasabahs[userID]) {
+                                        System.out.println("Maaf Saldo anda tidak cukup");
+                                        
+                                    } else {
+                                        
+                                    
                                     System.out.println("SALDO         : Rp." + saldoNasabahs[userID]);
                                     System.out.println();
                                     System.out.println("----------TRANSAKSI SUKSES----------");
@@ -193,6 +198,7 @@ public class sistemATM {
                                     nominalMutasi[userID][kolomMutasi[userID]] = nominal[tarik - 1];
                                     kolomMutasi[userID] += 1;
                                     break;
+                                } break;
 
                                 case 2:
                                     System.out.println("\033[H\033[2J");
@@ -336,7 +342,7 @@ public class sistemATM {
                                 break;
                             } else {
                                 System.out.println();
-                                System.out.println("Apakah Anda ingin melakukan transaksi lagi? (y/n)");
+                                System.out.println("Apakah Anda ingin kembali ke menu utama? (y/n)");
                                 kembali2 = sc.next().charAt(0);
                             }
                         } while (kembali2 == 'y' || kembali2 == 'Y');
@@ -356,7 +362,7 @@ public class sistemATM {
                         System.out.println("1. Data Nasabah");
                         System.out.println("2. Tambah Nasabah");
                         System.out.println("3. Pencarian Nasabah");
-                        System.out.println("4. Kembali");
+                        System.out.println("4. Keluar");
                         System.out.print("--> ");
                         pilih1 = sc.nextInt();
 
@@ -450,8 +456,8 @@ public class sistemATM {
     static void headerTabel() {
         System.out.println(
                 "---------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%-5s | %-25s | %-20s | %-20s | %-10s%n",
-                "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
+        System.out.printf("%-10s | %-25s | %-20s | %-20s | %-10s%n",
+                "Urutan", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
 
     }
 }
