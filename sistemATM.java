@@ -11,7 +11,7 @@ public class sistemATM {
         // nasabah
         String[] fullNames = new String[15]; // nama lengkap nasabah baru
         int[] rekNasabahs = new int[15]; // nomor rekening nasabah baru
-        int[] pinNasabahs = new int[15]; // PIN nasabah baru
+        String[] pinNasabahs = new String[15]; // PIN nasabah baru
         int[] saldoNasabahs = new int[15]; // saldo nasabah baru
 
         fullNames[0] = "M. Arif Fahrudin";
@@ -22,9 +22,9 @@ public class sistemATM {
         rekNasabahs[1] = 23417600;
         rekNasabahs[2] = 23417604;
 
-        pinNasabahs[0] = 760192;
-        pinNasabahs[1] = 760085;
-        pinNasabahs[2] = 760104;
+        pinNasabahs[0] = "760192";
+        pinNasabahs[1] = "760085";
+        pinNasabahs[2] = "760104";
 
         saldoNasabahs[0] = 500000;
         saldoNasabahs[1] = 7500000;
@@ -40,7 +40,8 @@ public class sistemATM {
         int customerCount = 3;
         int pilih = 0, pilih1 = 0, pilih2 = 0, pilih3;
         int pilihAdmin = 0;
-        int noRekNasabah, pinNasabah;
+        int noRekNasabah; 
+        String pinNasabah;
         int userID = 0;
 
         // array mutasi
@@ -136,9 +137,10 @@ public class sistemATM {
                     System.out.print("Masukkan nomor rekening Anda: ");
                     noRekNasabah = sc.nextInt();
                     System.out.print("Masukkan PIN ATM Anda: ");
-                    pinNasabah = sc.nextInt();
+                    pinNasabah = sc.nextLine();
+                     pinNasabah = sc.nextLine();
                     for (int i = 0; i < customerCount; i++) {
-                        if (noRekNasabah == rekNasabahs[i] && pinNasabah == pinNasabahs[i]) {
+                        if (noRekNasabah == rekNasabahs[i] && pinNasabah.equals(pinNasabahs[i])) {
                             isValidCredential = true;
                             userID = i;
                         }
@@ -288,15 +290,15 @@ public class sistemATM {
                                     System.out.print("Masukkan PIN ATM Lama : ");
                                     int pinLama = sc.nextInt();
                                     System.out.print("Masukkan PIN ATM Baru : ");
-                                    int pinBaru = sc.nextInt();
+                                    String pinBaru = sc.nextLine();
                                     sc.nextLine();
-                                    if (pinBaru > 999999 || pinBaru < 100000) {
+                                    if (pinBaru.length()!=pinNasabahs[userID].length()) {
                                         System.out.println("PIN baru harus 6 digit");
                                     } else if (pinBaru == pinNasabahs[userID]) {
                                         System.out.println("PIN lama dan PIN baru tidak boleh sama");
                                     }
                                     System.out.print("Konfirmasi Pin        : ");
-                                    int konfirmasi = sc.nextInt();
+                                    String konfirmasi = sc.nextLine();
                                     if (pinBaru == konfirmasi) {
                                         pinNasabahs[userID] = pinBaru;
                                     } else {
@@ -394,7 +396,7 @@ public class sistemATM {
                                     System.out.print("Nomor Rekening : ");
                                     rekNasabahs[customerCount] = sc.nextInt();
                                     System.out.print("PIN            : ");
-                                    pinNasabahs[customerCount] = sc.nextInt();
+                                    pinNasabahs[customerCount] = sc.nextLine();
                                     System.out.print("Saldo          : ");
                                     saldoNasabahs[customerCount] = sc.nextInt();
 
