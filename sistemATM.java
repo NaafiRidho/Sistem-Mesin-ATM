@@ -36,11 +36,12 @@ public class sistemATM {
         String inputUsername, inputPassword, search;
 
         boolean isValidCredential = false;
+        boolean isValidCredentials = false;
 
         int customerCount = 3;
         int pilih = 0, pilih1 = 0, pilih2 = 0, pilih3;
         int pilihAdmin = 0;
-        int noRekNasabah; 
+        int noRekNasabah;
         String pinNasabah;
         int userID = 0;
 
@@ -89,13 +90,13 @@ public class sistemATM {
 
                     for (int i = 0; i < usernames.length; i++) {
                         if (inputUsername.equals(usernames[i]) && inputPassword.equals(passwords[i])) {
-                            isValidCredential = true;
+                            isValidCredentials = true;
                             userID = i;
                             break;
                         }
                     }
 
-                    while (!isValidCredential) {
+                    while (!isValidCredentials) {
                         System.out.println("\033[H\033[2J");
                         System.out.flush();
 
@@ -114,7 +115,7 @@ public class sistemATM {
 
                         for (int i = 0; i < usernames.length; i++) {
                             if (inputUsername.equals(usernames[i]) && inputPassword.equals(passwords[i])) {
-                                isValidCredential = true;
+                                isValidCredentials = true;
                                 userID = i;
                                 break;
                             }
@@ -138,7 +139,7 @@ public class sistemATM {
                     noRekNasabah = sc.nextInt();
                     System.out.print("Masukkan PIN ATM Anda: ");
                     pinNasabah = sc.nextLine();
-                     pinNasabah = sc.nextLine();
+                    pinNasabah = sc.nextLine();
                     for (int i = 0; i < customerCount; i++) {
                         if (noRekNasabah == rekNasabahs[i] && pinNasabah.equals(pinNasabahs[i])) {
                             isValidCredential = true;
@@ -164,6 +165,7 @@ public class sistemATM {
                             System.out.println("||  4. Transfer            ||");
                             System.out.println("||  5. Ubah PIN            ||");
                             System.out.println("||  6. Mutasi Rekening     ||");
+                            System.out.println("||  7. Keluar              ||");
                             System.out.println("||=========================||");
                             pilih2 = sc.nextInt();
 
@@ -189,18 +191,18 @@ public class sistemATM {
                                     System.out.println("NOMINAL       : Rp." + nominal[tarik - 1]);
                                     if (nominal[tarik] > saldoNasabahs[userID]) {
                                         System.out.println("Maaf Saldo anda tidak cukup");
-                                        
+
                                     } else {
-                                        
-                                    
-                                    System.out.println("SALDO         : Rp." + saldoNasabahs[userID]);
-                                    System.out.println();
-                                    System.out.println("----------TRANSAKSI SUKSES----------");
-                                    jenisFitur[userID][kolomMutasi[userID]] = "Penarikan Tunai";
-                                    nominalMutasi[userID][kolomMutasi[userID]] = nominal[tarik - 1];
-                                    kolomMutasi[userID] += 1;
+
+                                        System.out.println("SALDO         : Rp." + saldoNasabahs[userID]);
+                                        System.out.println();
+                                        System.out.println("----------TRANSAKSI SUKSES----------");
+                                        jenisFitur[userID][kolomMutasi[userID]] = "Penarikan Tunai";
+                                        nominalMutasi[userID][kolomMutasi[userID]] = nominal[tarik - 1];
+                                        kolomMutasi[userID] += 1;
+                                        break;
+                                    }
                                     break;
-                                } break;
 
                                 case 2:
                                     System.out.println("\033[H\033[2J");
@@ -292,7 +294,7 @@ public class sistemATM {
                                     System.out.print("Masukkan PIN ATM Baru : ");
                                     String pinBaru = sc.nextLine();
                                     sc.nextLine();
-                                    if (pinBaru.length()!=pinNasabahs[userID].length()) {
+                                    if (pinBaru.length() != 6) {
                                         System.out.println("PIN baru harus 6 digit");
                                     } else if (pinBaru == pinNasabahs[userID]) {
                                         System.out.println("PIN lama dan PIN baru tidak boleh sama");
@@ -341,23 +343,28 @@ public class sistemATM {
 
                             }
                             if (pilih2 == 7) {
+                                isValidCredential=false;
                                 break;
                             } else {
                                 System.out.println();
                                 System.out.println("Apakah Anda ingin kembali ke menu utama? (y/n)");
                                 kembali2 = sc.next().charAt(0);
+                                if (kembali2=='n'||kembali2=='N') {
+                                    isValidCredential=false;
+                                }
                             }
+
                         } while (kembali2 == 'y' || kembali2 == 'Y');
                     }
                     // KELUAR
-                case 3:
-                    return;
+                    continue;
+
             }
             System.out.print("\033[H\033[2J");
             System.out.flush();
 
             // ADMIN
-            if (userID != -1) {
+            if (isValidCredentials) {
                 String role = roles[userID];
                 if (role.equals("admin")) {
                     do {
@@ -440,18 +447,21 @@ public class sistemATM {
                                 break;
                         }
                         if (pilih1 == 4) {
+                            isValidCredentials=false;
                             break;
                         } else {
                             System.out.println();
                             System.out.println("Apakah Anda ingin kembali ke menu utama? (y/n)");
                             kembali = sc.next().charAt(0);
+                            if (kembali=='n'||kembali=='N') {
+                                isValidCredentials=false;
+                            }
                         }
                     } while (kembali == 'y' || kembali == 'Y');
                 }
             }
-            System.out.println();
 
-        } while (pilih != 3 || pilih1 == 4 || pilih2 == 7);
+        } while (pilih!=3);
 
     }
 
