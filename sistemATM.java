@@ -140,27 +140,43 @@ public class sistemATM {
                                 System.out.println("3. 300.000 \t 6. 1.500.000");
                                 System.out.print("Pilih jumlah Penarikan Tunai yang Anda inginkan : ");
                                 int tarik = sc.nextInt();
-                                tarik -= 1;
-                                saldoNasabahs[userID] = saldoNasabahs[userID] - nominal[tarik];
-                       
-                                if (nominal[tarik] > saldoNasabahs[userID]) {
-                                    System.out.println("Maaf, saldo Anda tidak cukup");
-                                } else {
-                                    System.out.println();
-                                    System.out.println("            TARIK TUNAI             ");
-                                    System.out.println();
-                                    System.out.println("NAMA          : " + fullNames[userID]);
-                                    System.out.println("NO. REKENING  : " + rekNasabahs[userID]);
-                                    System.out.println("NOMINAL       : Rp." + nominal[tarik-1]);
-                                    System.out.println("SALDO         : Rp." + saldoNasabahs[userID]);
-                                    System.out.println();
-                                    System.out.println("----------TRANSAKSI SUKSES----------");
-                                    jenisFitur[userID][kolomMutasi[userID]] = "Penarikan Tunai";
-                                    nominalMutasi[userID][kolomMutasi[userID]] = nominal[tarik-1];
-                                    kolomMutasi[userID] += 1;
-                                }
-                                break;
 
+                                // Periksa apakah nilai tarik valid
+                                if (tarik < 1 || tarik > nominal.length) {
+                                    System.out.println("Nilai tarik tidak valid");
+                                    return;
+                                }
+
+                                tarik -= 1;
+
+                                // Lanjutkan proses penarikan tunai
+                                while (nominal[tarik] > saldoNasabahs[userID]) {
+                                    System.out.println();
+                                    System.out.println("------------------------------");
+                                    System.out.println("Maaf, saldo Anda tidak cukup"  );
+                                    System.out.println("------------------------------");
+                                    System.out.println();
+                                    System.out.print("Pilih jumlah Penarikan Tunai yang Anda inginkan : ");
+                                    tarik = sc.nextInt();
+                                    tarik -= 1;
+                                }
+
+                                saldoNasabahs[userID] = saldoNasabahs[userID] - nominal[tarik];
+
+                                // Cetak informasi transaksi
+                                System.out.println();
+                                System.out.println("            TARIK TUNAI             ");
+                                System.out.println();
+                                System.out.println("NAMA          : " + fullNames[userID]);
+                                System.out.println("NO. REKENING  : " + rekNasabahs[userID]);
+                                System.out.println("NOMINAL       : Rp." + nominal[tarik]);
+                                System.out.println("SALDO         : Rp." + saldoNasabahs[userID]);
+                                System.out.println();
+                                System.out.println("----------TRANSAKSI SUKSES----------");
+                                jenisFitur[userID][kolomMutasi[userID]] = "Penarikan Tunai";
+                                nominalMutasi[userID][kolomMutasi[userID]] = nominal[tarik];
+                                kolomMutasi[userID] += 1;
+                                break;
                             case 2:
                                 System.out.println("\033[H\033[2J");
                                 System.out.flush();
@@ -188,13 +204,14 @@ public class sistemATM {
                                     nominalMutasi[userID][kolomMutasi[userID]] = setor;
                                     kolomMutasi[userID] += 1;
                                 } 
+                                break;
                             
                             case 3:
                                 System.out.println("\033[H\033[2J");
                                 System.out.flush();
                                 System.out.println();
                                 System.out.println("              CEK SALDO             ");
-                                System.out.println("+----------------------------------+");
+                                System.out.println();
                                 System.out.println("NAMA            : " + fullNames[userID]);
                                 System.out.println("NO. REKENING    : " + rekNasabahs[userID]);
                                 System.out.println("SALDO           : Rp." + saldoNasabahs[userID]);
@@ -218,7 +235,7 @@ public class sistemATM {
                                         if (noRek == rekNasabahs[i]) {
                                             saldoNasabahs[i] = saldoNasabahs[i] + transfer;
                                             System.out.println();
-                                            System.out.println("                  TRANSFER                  ");
+                                            System.out.println("                   TRANSFER                   ");
                                             System.out.println();
                                             System.out.println("BANK TUJUAN   : " + bank);
                                             System.out.println("NAMA PENGIRIM : " + fullNames[userID]);
