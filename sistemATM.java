@@ -106,6 +106,7 @@ public class sistemATM {
                     }
 
                     if (isValidCredential) {
+                        do {
                         System.out.println("\033[H\033[2J");
                         System.out.flush();
                         System.out.println("+------------------------------------------+");
@@ -142,16 +143,16 @@ public class sistemATM {
                                 tarik -= 1;
                                 saldoNasabahs[userID] = saldoNasabahs[userID] - nominal[tarik];
                        
-                                System.out.println();
-                                System.out.println("            TARIK TUNAI             ");
-                                System.out.println();
-                                System.out.println("NAMA          : " + fullNames[userID]);
-                                System.out.println("NO. REKENING  : " + rekNasabahs[userID]);
-                                System.out.println("NOMINAL       : Rp." + nominal[tarik-1]);
                                 if (nominal[tarik] > saldoNasabahs[userID]) {
                                     System.out.println("Maaf, saldo Anda tidak cukup");
                                 } else {
-                                    System.out.println("SALDO   : Rp." + saldoNasabahs[userID]);
+                                    System.out.println();
+                                    System.out.println("            TARIK TUNAI             ");
+                                    System.out.println();
+                                    System.out.println("NAMA          : " + fullNames[userID]);
+                                    System.out.println("NO. REKENING  : " + rekNasabahs[userID]);
+                                    System.out.println("NOMINAL       : Rp." + nominal[tarik-1]);
+                                    System.out.println("SALDO         : Rp." + saldoNasabahs[userID]);
                                     System.out.println();
                                     System.out.println("----------TRANSAKSI SUKSES----------");
                                     jenisFitur[userID][kolomMutasi[userID]] = "Penarikan Tunai";
@@ -186,10 +187,7 @@ public class sistemATM {
                                     jenisFitur[userID][kolomMutasi[userID]] = "Setor Tunai";
                                     nominalMutasi[userID][kolomMutasi[userID]] = setor;
                                     kolomMutasi[userID] += 1;
-                                } else {
-                                    System.out.println("-----------------------------------------------------");
-                                    System.out.println("Penyetoran tunai harus kelipatan Rp50.000");
-                                }
+                                } 
                             
                             case 3:
                                 System.out.println("\033[H\033[2J");
@@ -323,6 +321,7 @@ public class sistemATM {
                             }
                         }
                     } while (kembali2 == 'y' || kembali2 == 'Y');
+                }
                  
                 // KELUAR
                 continue;
