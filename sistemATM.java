@@ -47,6 +47,7 @@ public class sistemATM {
         int pilihAdmin = 0;
         int noRekNasabah;
         int pinNasabah;
+        int pinKonfirmasi;
 
         // array mutasi
         int jumlah = 0;
@@ -320,11 +321,13 @@ public class sistemATM {
                                 System.out.println();
                                 System.out.println("Apakah Anda ingin melakukan transaksi lagi? (y/n)");
                                 kembali2 = sc.next().charAt(0);
-                                if (kembali2 == 'n' || kembali2 == 'N') {
+                                System.out.print("PIN :  ");
+                                pinKonfirmasi = sc.nextInt();
+                                if (kembali2 == 'n' || kembali2 == 'N' || pinKonfirmasi != pinNasabahs[userID]) {
                                     isValidCredential = false;
                                 }
                             }
-                        } while (kembali2 == 'y' || kembali2 == 'Y');
+                        } while (kembali2 == 'y' && pinKonfirmasi == pinNasabahs[userID] || kembali2 == 'Y' && pinKonfirmasi == pinNasabahs[userID]);
                     }
 
                     // KELUAR
