@@ -5,8 +5,13 @@ public class sistemATM {
     static boolean isValidCredential = false;
     static int customerCount = 3;
     static int userID = 0;
+    static int pencarian = 0;
+    static boolean found = false;
+    // nasabah
     static int[] rekNasabahs = new int[15]; // nomor rekening nasabah baru
     static int[] pinNasabahs = new int[15]; // PIN nasabah baru
+    static String[] fullNames = new String[15]; // nama lengkap nasabah baru
+    static int[] saldoNasabahs = new int[15]; // saldo nasabah baru
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -15,12 +20,6 @@ public class sistemATM {
         String[] usernames = { "admin1", "admin2", "admin3" };
         String[] passwords = { "passadmin1", "passadmin2", "passadmin3" };
         String[] roles = { "admin", "admin", "admin" };
-
-        // nasabah
-        String[] fullNames = new String[15]; // nama lengkap nasabah baru
-        // int[] rekNasabahs = new int[15]; // nomor rekening nasabah baru
-        // int[] pinNasabahs = new int[15]; // PIN nasabah baru
-        int[] saldoNasabahs = new int[15]; // saldo nasabah baru
 
         fullNames[0] = "M. Arif Fahrudin";
         fullNames[1] = "Naafi Ridho Athallah";
@@ -47,7 +46,7 @@ public class sistemATM {
         int pilihAdmin = 0;
         int noRekNasabah;
         int pinNasabah;
-        int pinKonfirmasi='n';
+        int pinKonfirmasi = 'n';
 
         // array mutasi
         int jumlah = 0;
@@ -321,8 +320,8 @@ public class sistemATM {
                                 System.out.println();
                                 System.out.println("Apakah Anda ingin melakukan transaksi lagi? (y/n)");
                                 kembali2 = sc.next().charAt(0);
-                                if (kembali2=='y') {
-                                    
+                                if (kembali2 == 'y') {
+
                                     System.out.print("PIN :  ");
                                     pinKonfirmasi = sc.nextInt();
                                 }
@@ -357,12 +356,7 @@ public class sistemATM {
                             case 1:
                                 System.out.println("Data Nasabah ");
                                 headerTabel();
-                                System.out.println(
-                                        "--------------------------------------------------------------------------------------");
-                                for (int i = 0; i < customerCount; i++) {
-                                    System.out.printf("%-3d | %-25s | %-20s | %-15s | %-10s%n",
-                                            i + 1, fullNames[i], rekNasabahs[i], saldoNasabahs[i], pinNasabahs[i]);
-                                }
+                                tabel();
                                 break;
 
                             // tambah nasabah
@@ -389,27 +383,24 @@ public class sistemATM {
 
                             case 3:
                                 sc.nextLine(); // membersihkan newline
-                                boolean found = false;
                                 System.out.print("Masukkan nama nasabah yang dicari: ");
                                 System.out.println();
                                 search = sc.nextLine();
                                 for (int i = 0; i < customerCount; i++) {
                                     if (fullNames[i].toLowerCase().contains(search.toLowerCase())) {
-
-                                        System.out.println("Data nasabah dengan nama yang dicari: ");
-                                        System.out.println();
-                                        headerTabel();
-                                        System.out.println(
-                                                "--------------------------------------------------------------------------------------");
-                                        System.out.printf("%-3d | %-25s | %-20s | %-15s | %-10s%n",
-                                                i + 1, fullNames[i], rekNasabahs[i], saldoNasabahs[i], pinNasabahs[i]);
+                                        pencarian = i;
                                         found = true;
                                     }
                                 }
+                                System.out.println("Data nasabah dengan nama yang dicari: ");
+                                System.out.println();
+                                headerTabel();
+                                tabel();
                                 if (!found) {
                                     System.out.println();
                                     System.out.println("Data tidak ditemukan");
                                 }
+                                found = false;
                                 break;
 
                             case 4:
@@ -445,6 +436,25 @@ public class sistemATM {
         System.out.printf("%-3s | %-25s | %-20s | %-15s | %-10s%n",
                 "No", "Nama Lengkap", "Nomor Rekening", "Saldo", "PIN");
 
+    }
+
+    static void tabel() {
+        if (found) {
+            for (int i = pencarian; i <= pencarian; i++) {
+                System.out.println(
+                        "--------------------------------------------------------------------------------------");
+                System.out.printf("%-3d | %-25s | %-20s | %-15s | %-10s%n",
+                        i + 1, fullNames[i], rekNasabahs[i], saldoNasabahs[i], pinNasabahs[i]);
+            }
+        }
+        if (!found) {
+            System.out.println(
+                    "--------------------------------------------------------------------------------------");
+            for (int i = 0; i < customerCount; i++) {
+                System.out.printf("%-3d | %-25s | %-20s | %-15s | %-10s%n",
+                        i + 1, fullNames[i], rekNasabahs[i], saldoNasabahs[i], pinNasabahs[i]);
+            }
+        }
     }
 
     public static void login(String[] usernames, String[] passwords, int pilih) {
