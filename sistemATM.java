@@ -50,9 +50,9 @@ public class sistemATM {
 
         // array mutasi
         int jumlah = 0;
-        String[][] jenisFitur = new String[customerCount][10];
-        int[][] nominalMutasi = new int[customerCount][10];
-        int[] kolomMutasi = new int[customerCount];
+        String[][] jenisFitur = new String[15][10];
+        int[][] nominalMutasi = new int[15][10];
+        int[] kolomMutasi = new int[10];
 
         // Login
         do {
@@ -293,16 +293,16 @@ public class sistemATM {
                                     System.out.println("            MUTASI REKENING             ");
                                     System.out.println("+--------------------------------------+");
                                     for (int i = 0; i < 50; i++) {
-                                        System.out.println("-");
+                                        System.out.print("-");
                                     }
                                     System.out.println();
                                     System.out.printf("%-5s | %-20s | %-20s%n", "no", "jenis Transaksi",
                                             "nominal transaksi");
                                     for (int i = 0; i < 50; i++) {
-                                        System.out.println("-");
+                                        System.out.print("-");
                                     }
                                     System.out.println();
-                                    for (int i = userID; i < userID; i++) {
+                                    for (int i = userID; i <= userID; i++) {
                                         for (int j = 0; j < kolomMutasi[i]; j++) {
                                             System.out.printf("%-5d | %-20s | %-20s%n", j + 1, jenisFitur[i][j],
                                                     nominalMutasi[i][j]);
