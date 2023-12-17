@@ -52,6 +52,7 @@ public class sistemATM {
         int jumlah = 0;
         String[][] jenisFitur = new String[15][10];
         int[][] nominalMutasi = new int[15][10];
+        char[][] charMutasi = new char[15][10];
         int[] kolomMutasi = new int[10];
 
         // Login
@@ -160,6 +161,7 @@ public class sistemATM {
                                     System.out.println();
                                     System.out.println("----------TRANSAKSI SUKSES----------");
                                     jenisFitur[userID][kolomMutasi[userID]] = "Penarikan Tunai";
+                                    charMutasi[userID][kolomMutasi[userID]] = '-';
                                     nominalMutasi[userID][kolomMutasi[userID]] = nominal[tarik];
                                     kolomMutasi[userID] += 1;
                                     break;
@@ -188,6 +190,7 @@ public class sistemATM {
                                         System.out.println(" ");
                                         System.out.println("----------SETORAN TUNAI BERHASIL----------");
                                         jenisFitur[userID][kolomMutasi[userID]] = "Setor Tunai";
+                                        charMutasi[userID][kolomMutasi[userID]] = '+';
                                         nominalMutasi[userID][kolomMutasi[userID]] = setor;
                                         kolomMutasi[userID] += 1;
                                     }
@@ -217,6 +220,10 @@ public class sistemATM {
                                     System.out.print("Masukkan jumlah nominal yang akan ditransfer : ");
                                     int transfer = sc.nextInt();
                                     saldoNasabahs[userID] = saldoNasabahs[userID] - transfer;
+                                    jenisFitur[userID][kolomMutasi[userID]] = "Transfer";
+                                    charMutasi[userID][kolomMutasi[userID]] = '-';
+                                    nominalMutasi[userID][kolomMutasi[userID]] = transfer;
+                                    kolomMutasi[userID] += 1;
 
                                     for (int i = 0; i < rekNasabahs.length; i++) {
                                         if (noRek == rekNasabahs[i]) {
@@ -234,9 +241,11 @@ public class sistemATM {
                                             System.out.println("JUMLAH        : Rp." + transfer);
                                             System.out.println();
                                             System.out.println("--------------TRANSFER BERHASIL--------------");
-                                            jenisFitur[userID][kolomMutasi[userID]] = "Transfer";
-                                            nominalMutasi[userID][kolomMutasi[userID]] = transfer;
-                                            kolomMutasi[userID] += 1;
+                                            int userIDS = i;
+                                            jenisFitur[userIDS][kolomMutasi[userIDS]] = "Transfer";
+                                            charMutasi[userIDS][kolomMutasi[userIDS]] = '+';
+                                            nominalMutasi[userIDS][kolomMutasi[userIDS]] = transfer;
+                                            kolomMutasi[userIDS] += 1;
                                         }
                                     }
                                     break;
@@ -304,7 +313,8 @@ public class sistemATM {
                                     System.out.println();
                                     for (int i = userID; i <= userID; i++) {
                                         for (int j = 0; j < kolomMutasi[i]; j++) {
-                                            System.out.printf("%-5d | %-20s | %-20s%n", j + 1, jenisFitur[i][j],
+                                            System.out.printf("%-5d | %-20s | %-1s%-20s%n", j + 1, jenisFitur[i][j],
+                                                    charMutasi[i][j],
                                                     nominalMutasi[i][j]);
                                         }
                                     }
