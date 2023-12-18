@@ -326,13 +326,13 @@ public class sistemATM {
                                             System.out.println("JUMLAH        : Rp." + transfer);
                                             System.out.println();
                                             System.out.println("-----------TRANSFER BERHASIL----------");
-                                            int userIDS = i;
+                                            int tfMutasi = i;
 
                                             //mutasi
-                                            jenisFitur[userIDS][kolomMutasi[userIDS]] = "Transfer";
-                                            charMutasi[userIDS][kolomMutasi[userIDS]] = '+';
-                                            nominalMutasi[userIDS][kolomMutasi[userIDS]] = transfer;
-                                            kolomMutasi[userIDS] += 1;
+                                            jenisFitur[tfMutasi][kolomMutasi[tfMutasi]] = "Transfer";
+                                            charMutasi[tfMutasi][kolomMutasi[tfMutasi]] = '+';
+                                            nominalMutasi[tfMutasi][kolomMutasi[tfMutasi]] = transfer;
+                                            kolomMutasi[tfMutasi] += 1;
                                         }
                                     }
                                     break;
