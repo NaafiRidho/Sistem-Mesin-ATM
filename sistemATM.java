@@ -444,18 +444,21 @@ public class sistemATM {
                                 System.out.print("Apakah Anda ingin melakukan transaksi lagi? (y/n) : ");
                                 kembali2 = sc.next().charAt(0);
 
-                                System.out.print("\033[H\033[2J");
-                                System.out.flush();
-                                System.out.print("Masukkan PIN ATM : ");
-                                pinKonfirmasi = sc.nextInt();
-
-                                while (pinKonfirmasi != pinNasabahs[userID]) {
-                                    System.out.println("----------------------------------------------------");
-                                    System.out.println("  PIN yang Anda masukkan salah. Silahkan coba lagi  ");
-                                    System.out.println("----------------------------------------------------");
-                                    System.out.println();
+                                if (kembali2=='y') {
+                                    
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.flush();
                                     System.out.print("Masukkan PIN ATM : ");
                                     pinKonfirmasi = sc.nextInt();
+    
+                                    while (pinKonfirmasi != pinNasabahs[userID]) {
+                                        System.out.println("----------------------------------------------------");
+                                        System.out.println("  PIN yang Anda masukkan salah. Silahkan coba lagi  ");
+                                        System.out.println("----------------------------------------------------");
+                                        System.out.println();
+                                        System.out.print("Masukkan PIN ATM : ");
+                                        pinKonfirmasi = sc.nextInt();
+                                    }
                                 }
 
                                 isValidCredential = false;
