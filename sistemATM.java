@@ -411,21 +411,22 @@ public class sistemATM {
                                 System.out.println("Apakah Anda ingin melakukan transaksi lagi? (y/n)");
                                 kembali2 = sc.next().charAt(0);
 
-                                if (kembali2 == 'y') {
+                                System.out.println();
+                                System.out.print("Masukkan PIN ATM : ");
+                                pinKonfirmasi = sc.nextInt();
 
-                                    System.out.print("PIN :  ");
+                                while (pinKonfirmasi != pinNasabahs[userID]) {
+                                    System.out.println("----------------------------------------------------");
+                                    System.out.println("PIN yang Anda masukkan salah. Silahkan coba lagi");
+                                    System.out.println("----------------------------------------------------");
+                                    System.out.println("Masukkan PIN ATM : ");
                                     pinKonfirmasi = sc.nextInt();
                                 }
-                                if (kembali2 == 'n' || kembali2 == 'N') {
-                                    isValidCredential = false;
-                                    break;
-                                }
+
+                                isValidCredential = false;
                             }
                         } while (pinKonfirmasi == pinNasabahs[userID]);
                     }
-
-                    // KELUAR
-
             }
             System.out.print("\033[H\033[2J");
             System.out.flush();
