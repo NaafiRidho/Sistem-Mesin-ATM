@@ -331,47 +331,59 @@ public class sistemATM {
                                     System.out.println("\033[H\033[2J");
                                     System.out.flush();  
 
-                                    System.out.println("              UBAH PIN             ");
-                                    System.out.println("+----------------------------------+");
+                                    System.out.println("            UBAH PIN            ");
+                                    System.out.println("+------------------------------+");
                                     System.out.print("Masukkan PIN ATM Lama : ");
                                     int pinLama = sc.nextInt();
+                                    
                                     while (pinLama != pinNasabahs[userID]) {
-                                        System.out.println("-----------------------------------------");
-                                        System.out.println("Maaf, PIN yang Anda masukkan salah");
-                                        System.out.println("-----------------------------------------");
+                                        System.out.println("PIN yang Anda masukkan salah! Coba lagi");
                                         System.out.print("Masukkan PIN ATM Lama : ");
                                         pinLama = sc.nextInt();
                                     }
-                                    System.out.print("Masukkan PIN ATM Baru : ");
-                                    int pinBaru = sc.nextInt();
-                                    sc.nextLine();
-                                    while (pinBaru > 999999 || pinBaru < 100000) {
-                                        System.out.println("------------------------------");
-                                        System.out.println("    PIN baru harus 6 digit    ");
-                                        System.out.println("------------------------------");
-                                        System.out.print("Masukkan PIN ATM Baru : ");
+                                    
+                                    // masukkan pin baru
+                                    int pinBaru;
+                                    do {
+                                        System.out.print("Masukkan PIN ATM baru (6 digit) : ");
                                         pinBaru = sc.nextInt();
                                         sc.nextLine();
-                                    }
-                                    if (pinBaru == pinNasabahs[userID]) {
-                                        System.out.println("--------------------------------------");
-                                        System.out.println("PIN lama dan PIN baru tidak boleh sama");
-                                        System.out.println("--------------------------------------");
-                                    }
-                                    System.out.print("Konfirmasi Pin        : ");
-                                    int konfirmasi = sc.nextInt();
-                                    while (pinBaru != konfirmasi) {
-                                        System.out.println("-----------------------------------------");
-                                        System.out.println("Maaf, PIN yang Anda masukkan tidak sesuai");
-                                        System.out.println("-----------------------------------------");
-                                        System.out.print("Konfirmasi Pin        : ");
-                                        konfirmasi = sc.nextInt();
-                                    }
+                                    
+                                        if (pinLama == pinBaru) {
+                                            System.out.println("PIN lama dan PIN baru tidak boleh sama");
+                                            continue;
+                                        }
+                                    
+                                        if (pinBaru < 100000 || pinBaru > 999999) {
+                                            System.out.println("PIN Baru harus 6 digit");
+                                            continue;
+                                        }
+                                    
+                                        // konfirmasi pin baru
+                                        int konfirmPin;
+                                        do {
+                                            System.out.print("Konfirmasi PIN baru : ");
+                                            konfirmPin = sc.nextInt();
+                                            if (konfirmPin != pinBaru) {
+                                                System.out.println("Maaf, PIN yang Anda masukkan tidak sesuai. Coba lagi");
+                                            }
+                                        } while (konfirmPin != pinBaru);
+                                    
+                                    } while (pinBaru == pinLama || pinBaru < 100000 || pinBaru > 999999);
+                                    
+                                    // print struk
+                                    System.out.println("\033[H\033[2J");
+                                    System.out.flush();
+
                                     pinNasabahs[userID] = pinBaru;
-                                    System.out.println("---------------------------------------------");
+                                    System.out.println("               UBAH PIN               ");
+                                    System.out.println();
+                                    System.out.println("NAMA            : " + fullNames[userID]);
+                                    System.out.println("NO. REKENING    : " + rekNasabahs[userID]);
+                                    System.out.println("-------------------------------------------");
                                     System.out.println("PENGGANTIAN PIN BERHASIL !");
                                     System.out.println("PIN ATM berhasil diganti menjadi " + pinBaru);
-                                    System.out.println("---------------------------------------------");
+                                    System.out.println("-------------------------------------------");
                                     break;
 
                                 case 6:
