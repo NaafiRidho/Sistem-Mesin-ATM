@@ -42,6 +42,7 @@ public class sistemATM {
                 System.out.println("------------------------------");
 
                 // login ulang
+                System.out.println();
                 System.out.println("+------------------------------------+");
                 System.out.print("Masukkan Username : ");
                 inputUsername = sc.next();
@@ -122,6 +123,9 @@ public class sistemATM {
        
         // Login
         do {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+
             System.out.println("-------------------------------------");
             System.out.println("|       SELAMAT DATANG DI ATM       |");
             System.out.println("-------------------------------------");
@@ -134,6 +138,9 @@ public class sistemATM {
             sc.nextLine(); // membersihkan new line
 
             while (pilih > 3) {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+
                 System.out.println("-------------------------------------");
                 System.out.println("|       SELAMAT DATANG DI ATM       |");
                 System.out.println("-------------------------------------");
@@ -212,7 +219,9 @@ public class sistemATM {
                                     saldoNasabahs[userID] = saldoNasabahs[userID] - nominal[tarik];
 
                                     // print struk
-                                    System.out.println();
+                                    System.out.println("\033[H\033[2J");
+                                    System.out.flush();
+
                                     System.out.println("            TARIK TUNAI             ");
                                     System.out.println();
                                     System.out.println("NAMA          : " + fullNames[userID]);
@@ -237,9 +246,8 @@ public class sistemATM {
                                     System.out.println("          SETOR TUNAI          ");
                                     System.out.println("+-----------------------------+");
                                     int setor;
-
                                     do {
-                                        System.out.println("Masukkan nominal uang yang Anda Setorkan (kelipatan Rp50.000)");
+                                        System.out.print("Masukkan nominal uang yang Anda Setorkan (kelipatan Rp50.000) : ");
                                         setor = sc.nextInt();
                                         sc.nextLine();
 
@@ -303,7 +311,9 @@ public class sistemATM {
                                     for (int i = 0; i < rekNasabahs.length; i++) {
                                         if (noRek == rekNasabahs[i]) {
                                             saldoNasabahs[i] = saldoNasabahs[i] + transfer;
-                                            System.out.println();
+                                            System.out.println("\033[H\033[2J");
+                                            System.out.flush();
+
                                             System.out.println("               TRANSFER               ");
                                             System.out.println();
                                             System.out.println("BANK TUJUAN   : " + bank);
@@ -337,7 +347,10 @@ public class sistemATM {
                                     int pinLama = sc.nextInt();
                                     
                                     while (pinLama != pinNasabahs[userID]) {
-                                        System.out.println("PIN yang Anda masukkan salah! Coba lagi");
+                                        System.out.println();
+                                        System.out.println("-------------------------------------------");
+                                        System.out.println("  PIN yang Anda masukkan salah! Coba lagi  ");
+                                        System.out.println("-------------------------------------------");
                                         System.out.print("Masukkan PIN ATM Lama : ");
                                         pinLama = sc.nextInt();
                                     }
@@ -350,12 +363,17 @@ public class sistemATM {
                                         sc.nextLine();
                                     
                                         if (pinLama == pinBaru) {
+                                            System.out.println();
+                                            System.out.println("-------------------------------------------");
                                             System.out.println("PIN lama dan PIN baru tidak boleh sama");
+                                            System.out.println("-------------------------------------------");
                                             continue;
                                         }
                                     
                                         if (pinBaru < 100000 || pinBaru > 999999) {
-                                            System.out.println("PIN Baru harus 6 digit");
+                                            System.out.println("--------------------------");
+                                            System.out.println("  PIN Baru harus 6 digit  ");
+                                            System.out.println("--------------------------");
                                             continue;
                                         }
                                     
@@ -365,7 +383,10 @@ public class sistemATM {
                                             System.out.print("Konfirmasi PIN baru : ");
                                             konfirmPin = sc.nextInt();
                                             if (konfirmPin != pinBaru) {
+                                                System.out.println();
+                                                System.out.println("----------------------------------------------------");
                                                 System.out.println("Maaf, PIN yang Anda masukkan tidak sesuai. Coba lagi");
+                                                System.out.println("----------------------------------------------------");
                                             }
                                         } while (konfirmPin != pinBaru);
                                     
@@ -420,18 +441,20 @@ public class sistemATM {
                                 break;
                             } else {
                                 System.out.println();
-                                System.out.println("Apakah Anda ingin melakukan transaksi lagi? (y/n)");
+                                System.out.print("Apakah Anda ingin melakukan transaksi lagi? (y/n) : ");
                                 kembali2 = sc.next().charAt(0);
 
-                                System.out.println();
+                                System.out.print("\033[H\033[2J");
+                                System.out.flush();
                                 System.out.print("Masukkan PIN ATM : ");
                                 pinKonfirmasi = sc.nextInt();
 
                                 while (pinKonfirmasi != pinNasabahs[userID]) {
                                     System.out.println("----------------------------------------------------");
-                                    System.out.println("PIN yang Anda masukkan salah. Silahkan coba lagi");
+                                    System.out.println("  PIN yang Anda masukkan salah. Silahkan coba lagi  ");
                                     System.out.println("----------------------------------------------------");
-                                    System.out.println("Masukkan PIN ATM : ");
+                                    System.out.println();
+                                    System.out.print("Masukkan PIN ATM : ");
                                     pinKonfirmasi = sc.nextInt();
                                 }
 
@@ -448,6 +471,9 @@ public class sistemATM {
                 String role = roles[userID];
                 if (role.equals("admin")) {
                     do {
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
                         System.out.println("1. Data Nasabah");
                         System.out.println("2. Tambah Nasabah");
                         System.out.println("3. Pencarian Nasabah");
@@ -458,7 +484,11 @@ public class sistemATM {
                         switch (pilih1) {
                             // data nasabah
                             case 1:
-                                System.out.println("Data Nasabah ");
+                                System.out.print("\033[H\033[2J");
+                                System.out.flush();
+
+                                System.out.println("                                    DATA NASABAH                                ");
+                                System.out.println();
                                 headerTabel();
                                 tabel();
                                 break;
@@ -467,6 +497,9 @@ public class sistemATM {
                             case 2:
                                 if (customerCount < fullNames.length) {
                                     sc.nextLine(); // membersihkan new line
+
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.flush();
 
                                     System.out.println("          TAMBAH NASABAH BARU          ");
                                     System.out.println("+-------------------------------------+");
@@ -481,9 +514,9 @@ public class sistemATM {
 
                                     customerCount++;
                                     System.out.println();
-                                    System.out.println("-----------------------------------");
-                                    System.out.println("Nasabah baru berhasil ditambahkan !");
-                                    System.out.println("-----------------------------------");
+                                    System.out.println("-----------------------------------------");
+                                    System.out.println("   Nasabah baru berhasil ditambahkan !   ");
+                                    System.out.println("-----------------------------------------");
    
 
                                 } else {
@@ -498,8 +531,7 @@ public class sistemATM {
                         
                                 sc.nextLine(); // membersihkan newline
 
-                                System.out.print("Masukkan nama nasabah yang dicari: ");
-                                System.out.println();
+                                System.out.print("Masukkan nama nasabah yang dicari : ");
                                 String search = sc.nextLine();
                                 for (int i = 0; i < customerCount; i++) {
                                     if (fullNames[i].toLowerCase().contains(search.toLowerCase())) {
@@ -507,15 +539,21 @@ public class sistemATM {
                                         found = true;
                                     }
                                 }
-                                System.out.println();
-                                System.out.println("Data nasabah dengan nama yang dicari: ");
+                                System.out.print("\033[H\033[2J");
+                                System.out.flush();
+
+                                System.out.print("Data nasabah dengan nama yang dicari : ");
                                 System.out.println();
                                 headerTabel();
                                 tabel();
+
                                 if (!found) {
-                                    System.out.println("----------------------");
-                                    System.out.println("Data tidak ditemukan");
-                                    System.out.println("----------------------");
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.flush();
+
+                                    System.out.println("------------------------");
+                                    System.out.println("  Data tidak ditemukan  ");
+                                    System.out.println("------------------------");
                                 }
                                 found = false;
                                 break;
@@ -533,7 +571,7 @@ public class sistemATM {
                             break;
                         } else {
                             System.out.println();
-                            System.out.println("Apakah Anda ingin kembali ke menu utama? (y/n)");
+                            System.out.print("Apakah Anda ingin kembali ke menu utama? (y/n) : ");
                             kembali = sc.next().charAt(0);
                             if (kembali == 'n' || kembali == 'N') {
                                 isLogin = false;
