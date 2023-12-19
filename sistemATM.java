@@ -28,7 +28,6 @@ public class sistemATM {
             for (int i = 0; i < usernames.length; i++) {
                 if (inputUsername.equals(usernames[i]) && inputPassword.equals(passwords[i])) {
                     isLogin = true;
-                    userID = i;
                     break;
                 }
             }
@@ -89,7 +88,6 @@ public class sistemATM {
         // admin
         String[] usernames = { "admin1", "admin2", "admin3" };
         String[] passwords = { "passadmin1", "passadmin2", "passadmin3" };
-        String[] roles = { "admin", "admin", "admin" };
 
         fullNames[0] = "M. Arif Fahrudin";
         fullNames[1] = "Naafi Ridho Athallah";
@@ -449,9 +447,9 @@ public class sistemATM {
                                 kembali2 = sc.next().charAt(0);
 
                                 if (kembali2 == 'y') {
-
                                     System.out.print("\033[H\033[2J");
                                     System.out.flush();
+                                    
                                     System.out.print("Masukkan PIN ATM : ");
                                     pinKonfirmasi = sc.nextInt();
 
@@ -476,8 +474,6 @@ public class sistemATM {
 
             // ADMIN
             if (isLogin) {
-                String role = roles[userID];
-                if (role.equals("admin")) {
                     do {
                         System.out.print("\033[H\033[2J");
                         System.out.flush();
@@ -587,10 +583,8 @@ public class sistemATM {
                         }
                     } while (kembali == 'y' || kembali == 'Y');
                 }
-            }
 
         } while (pilih != 3);
-
     }
 
     static void headerTabel() {
